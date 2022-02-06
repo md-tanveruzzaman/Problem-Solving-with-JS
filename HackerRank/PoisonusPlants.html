@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>6,5,8,4,7,10,9</p>
+    <script>
+        function myf() {
+
+            var p = [6,5,8,4,7,10,9];
+            const iterator = function(argt) {
+                let results = []
+                argt.sort((a,b) => {
+                    if (a > b) {
+                        results.push(a)
+                    }
+                })
+                const afterIteration = argt.filter(ps => results.indexOf( ps ) < 0);
+                console.log(afterIteration)
+                return afterIteration
+            }
+
+            let lastIterator = [...p];
+            let noOfTimes = 0;
+
+            let newVal = iterator(p);
+            while (lastIterator.length !== newVal.length) {
+                lastIterator = newVal;
+                noOfTimes++;
+                newVal = iterator(lastIterator);
+            }
+
+            console.log(noOfTimes)
+            
+
+        }
+
+        myf();
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        solution('hlbeeykoqqqqokyeeblh');
+        
+        function solution(inputString) {
+            inputstring = inputString.toString();
+            const inputArr = inputstring.split('');
+            if (inputArr.length === 1) return true;
+
+            let midPoint;
+            let isEven;
+            if (inputArr.length % 2 === 0) {
+                isEven = true;
+                midPoint = inputArr.length / 2;
+            } else {
+                midPoint = (inputArr.length - 1) / 2;
+            }
+            const left = [];
+            const right = [];
+
+            for (let i = 0; i < inputArr.length; i++) {
+                if (i < midPoint) {
+                    left.push(inputArr[i]);
+                } else {
+                    if (isEven) {
+                        right.push(inputArr[i]);
+                    } else {
+                        if (i !== midPoint)
+                            right.push(inputArr[i]);
+                    }
+                }
+            }
+
+            const reverseRight = right.reverse();
+
+            var is_same = (left.length == reverseRight.length) && left.every(function (element, index) {
+                return element === reverseRight[index];
+            });
+
+            return is_same;
+        }
+
+    </script>
+</body>
+
+</html>
